@@ -1,0 +1,169 @@
+<div class="container-fluid">
+
+  <p-table #dt [columns]="cols" [value]="equipList" [resizableColumns]="true" [responsive]="true" [paginator]="true"
+    [rows]="7">
+    <ng-template pTemplate="caption">
+      <div style="text-align:center">
+        List of Equipments
+      </div>
+      <div class="ui-helper-clearfix">
+        <button type="button" pButton icon="fa fa-file-o" iconPos="left" label="Export Data" (click)="dt.exportCSV()"
+          style="float:left"></button>
+        <div style="float:right">
+          <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+          <input type="text" pInputText size="15" placeholder="Global Filter"
+            (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngFor="let col of columns" [pSortableColumn]="col.field" pResizableColumn>
+          {{col.header}}
+          <p-sortIcon [field]="col.field"></p-sortIcon>
+        </th>
+        <th>Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr>
+        <td *ngFor="let col of columns">
+          <span class="ui-column-title">{{col.header}}</span>
+          <span *ngIf="col.type=='string'">{{rowData[col.field]}}</span>
+          <span *ngIf="col.type=='number'">{{rowData[col.field]}}</span>
+          <span *ngIf="col.type=='date'">{{rowData[col.field] | date }}</span>
+        </td>
+        <td>
+          <button (click)="onEdit(rowData['id'])" class="btn btn-warning"><i class="fa fa-edit"></i></button>
+          &nbsp;&nbsp;
+          <button (click)="onDelete(rowData['id'])" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div style="text-align:left;">
+        <button type="button" pButton icon="fa fa-plus" (click)="onAdd()" label="Add"></button>
+        <div style="text-align:center;float: right;">There are {{equipList?.length}} Equipments</div>
+      </div>
+    </ng-template>
+  </p-table>
+</div>
+
+
+
+
+
+<!-- TOAST overlay message display alert to conform before delete record -->
+<p-toast position="center" key="c" (onClose)="onReject()" [modal]="true" [baseZIndex]="5000">
+  <ng-template let-message pTemplate="message">
+    <div style="text-align: center">
+      <i class="pi pi-exclamation-triangle" style="font-size: 3em"></i>
+      <h3>{{message.summary}}</h3>
+      <p>{{message.detail}}</p>
+    </div>
+    <div class="ui-g ui-fluid">
+      <div class="ui-g-6">
+        <button type="button" pButton (click)="confirmDelete()" label="Yes" class="ui-button-success"></button>
+      </div>
+      <div class="ui-g-6">
+        <button type="button" pButton (click)="rejectDelete()" label="No" class="ui-button-secondary"></button>
+      </div>
+    </div>
+  </ng-template>
+</p-toast>
+<!-- -------------------------------------------------------------------------- -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<div class="container-fluid">
+
+  <p-table #dt [columns]="cols" [value]="equipList" [resizableColumns]="true"
+   [responsive]="true" [paginator]="true" [rows]="7">
+    <ng-template pTemplate="caption">
+      <div style="text-align:center">
+        List of Equipments
+      </div>
+      <div class="ui-helper-clearfix">   
+        <button type="button" pButton icon="fa fa-file-o" iconPos="left" label="Export Data" (click)="dt.exportCSV()"
+          style="float:left"></button>
+        <div style="float:right">
+          <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+          <input type="text" pInputText size="15" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')"
+            style="width:auto">
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngFor="let col of columns" [pSortableColumn]="col.field" pResizableColumn>
+          {{col.header}}
+          <p-sortIcon [field]="col.field"></p-sortIcon>
+        </th>
+        <th>Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr>
+        <td *ngFor="let col of columns">
+          <span class="ui-column-title">{{col.header}}</span>
+          <span *ngIf="col.type=='string'">{{rowData[col.field]}}</span>
+          <span *ngIf="col.type=='number'">{{rowData[col.field]}}</span>
+          <span *ngIf="col.type=='date'">{{rowData[col.field] | date }}</span>
+        </td>
+        <td>
+          <button (click)="onEdit(rowData['eqmId'])" class="btn btn-warning"><i class="fa fa-edit"></i></button>
+          &nbsp;&nbsp;
+          <button (click)="onDelete(rowData['eqmId'])" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div style="text-align:left;">
+        <button type="button" pButton icon="fa fa-plus" (click)="onAdd()" label="Add"></button>        
+        <div style="text-align:center;float: right;">There are {{equipList?.length}} Equipments</div>   
+      </div>      
+    </ng-template>
+  </p-table>
+</div> -->

@@ -1,0 +1,28 @@
+export interface eqpmst {
+    orgid : number,
+    oprid : number,
+    eqm_id : number,
+    eqm_cd : string,
+    eqm_name : string,
+    item_id ?: number,
+    asst_id ?: number,
+    gen_man_id : number,
+    ven_id : number,
+    eqm_model_no : string,
+    eqm_sr_no : number,
+    eqm_pur_dt : Date,
+    eqm_instl_dt : Date,
+    eqm_owner_deptid : number,
+    eqm_locid : number,
+    eqm_amt : number,
+    eqm_remark : string,
+    eqm_defunct : string,
+    eqm_img1 ?: string,
+    eqm_img2 ?: string,
+    eqm_img3 ?: string,
+    eqm_tech_doc ?: string,
+    eqm_manual_doc ?: string,
+    eqm_prev_nextdt ?: Date,
+    eqm_condmn_dt ?:Date
+    
+}

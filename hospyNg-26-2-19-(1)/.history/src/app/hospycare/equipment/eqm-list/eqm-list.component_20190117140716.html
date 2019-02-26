@@ -1,0 +1,41 @@
+<div class="container-fluid">
+
+  <p-table #dt [columns]="cols" [value]="equipList" [responsive]="true" [paginator]="true" [rows]="7">
+    <ng-template pTemplate="caption">
+      List of Equipments
+
+      <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+      <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+      
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngFor="let col of columns">
+          {{col.header}}
+        </th>
+        <th>Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr>
+        <td *ngFor="let col of columns">
+          <span class="ui-column-title">{{col.header}}</span>
+          <span *ngIf="col.type=='string'">{{rowData[col.field]}}</span>
+          <span *ngIf="col.type=='number'">{{rowData[col.field]}}</span>
+          <span *ngIf="col.type=='date'">{{rowData[col.field] | date }}</span>
+        </td>
+        <td>
+          <button (click)="onEdit(rowData['eqmId'])" class="btn btn-warning"><i class="fa fa-edit"></i></button>
+          &nbsp;&nbsp;
+          <button (click)="onDelete(rowData['eqmId'])" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div style="text-align:left">
+        <button type="button" pButton icon="fa fa-plus" (click)="onAdd()" label="Add"></button>
+      </div>
+      There are {{equipList?.length}} Equipments
+    </ng-template>
+  </p-table>
+</div>

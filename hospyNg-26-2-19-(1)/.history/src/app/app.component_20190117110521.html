@@ -1,0 +1,91 @@
+
+<app-main></app-main>
+<div class="d-flex align-items-stretch">
+  <app-sidebar></app-sidebar>
+
+  <div class="page-holder w-100 d-flex flex-wrap">
+    <div class="container-fluid px-xl-4">
+      <section class="py-2">
+        <div class="row">
+          <div class="col-12">            
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
+
+<button type="button" data-toggle="collapse" data-target="#style-switch" id="style-switch-button" class="btn btn-sm d-none d-lg-inline-block p-3 collapsed"
+  aria-expanded="false">
+  <i class="fa fa-cog"></i>
+</button>
+
+<div id="style-switch" class="collapse">
+  <h5 class="mb-4">Select theme colour</h5>
+  <form class="mb-4">
+    <select name="colour" id="colour" class="form-control">
+      <option data-toggle="collapse" data-target="#style-switch" (click)="onCSSChange('blue')" value="default">blue</option>
+      <option data-toggle="collapse" data-target="#style-switch" (click)="onCSSChange('pink')" value="pink">pink</option>
+      <option data-toggle="collapse" data-target="#style-switch" (click)="onCSSChange('violet')" value="violet">violet</option>
+      <option data-toggle="collapse" data-target="#style-switch" (click)="onCSSChange('sea')" value="sea">sea</option>
+      <option data-toggle="collapse" data-target="#style-switch" (click)="onCSSChange('red')" value="red">red</option>
+      <option data-toggle="collapse" data-target="#style-switch" (click)="onCSSChange('green')" value="green">green</option>
+    </select>
+  </form>
+</div> 
+
+<!--
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Hospycare</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+          Equipment Management 
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="'/equipment/eqList'">
+            Equipment Master List
+          </a>
+          <a class="dropdown-item" [routerLink]="'/equipment/eqMaster'">Create Equipment</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" [routerLink]="'/equipment/eqMaintanance'"> Equipment Maintanace Details </a>
+          <a class="dropdown-item" [routerLink]="'/equipment/eqInsurance'">
+            Equipment Insurance Details</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" [routerLink]="'/equipment/eqBreakdown'"> Breakdown Maintanace </a>
+          <a class="dropdown-item" [routerLink]="'/equipment/eqPreventive'">
+            Preventive Maintanace
+          </a>
+          <a class="dropdown-item" [routerLink]="'/equipment/eqInsuranceClaim'">
+            Insurance Claim
+          </a>
+          <a class="dropdown-item" [routerLink]="'/equipment/eqTransfer'">
+            Equipment Transfer
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" [routerLink]="'/equipment/eqcallLogSearch'">
+            Call Logging Search
+          </a>
+          <a class="dropdown-item" [routerLink]="'/equipment/eqcallLogMst'">
+            Call Logging
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>
+-->

@@ -1,0 +1,99 @@
+<p-panel header="Location Master">
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">
+        Code. *:
+      </div>
+      <div class="ui-grid-col-4">
+        <input pInputText type="text" [(ngModel)]="locMst.code" name="code"  #code="ngModel" required
+          placeholder="Required" dir-letter-only>
+        <small *ngIf="hasErrors(code)" class="help-block">
+          <span *ngIf="code.errors.required"><span style="color:red">Code is required.</span></span>
+        </small>
+
+      </div>
+      <div class="ui-grid-col-2">
+        Name. *:
+      </div>
+      <div class="ui-grid-col-4">
+        <input pInputText type="text" [(ngModel)]="locMst.name"  name="name" #name="ngModel" minlength="2" required
+          placeholder="Required" dir-letter-only>
+        <small *ngIf="hasErrors(name)" class="help-block">
+          <span *ngIf="name.errors.required"><span style="color:red">Name is required.</span></span>
+          <span *ngIf="name.errors.minlength">name must be at least 2 characters long.</span>
+        </small>
+      </div>
+
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">
+        Email :
+      </div>
+      <div class="ui-grid-col-4">
+        <input pInputText type="text" [(ngModel)]="locMst.email" name="email" #email="ngModel">
+      </div>
+      <div class="ui-grid-col-2">
+        Mobile no :
+      </div>
+      <div class="ui-grid-col-4">
+        <input pInputText type="number" [(ngModel)]="locMst.mobile" name="mobile" #mobile="ngModel">
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">
+        Address :
+      </div>
+      <div class="ui-grid-col-4">
+        <input pInputText type="text" [(ngModel)]="locMst.address" name="address" #address="ngModel">
+      </div>
+      <div class="ui-grid-col-2">
+        Type . *:
+      </div>
+      <div class="ui-grid-col-4">
+        <!-- <p-inputSwitch (onChange)=" handleType($event)"  [(ngModel)]=" checkedType"></p-inputSwitch> -->
+        <p-dropdown [options]="types" [(ngModel)]="locMst.type" name = "type"  #type="ngModel" [style]="{'width':'308px'}"  required placeholder="Select a Type" dir-letter-only></p-dropdown>
+        <!-- <p>Selected Car: {{selectedCar1 || 'none'}}</p> -->
+        <small *ngIf="hasErrors(type)" class="help-block">
+          <span *ngIf="type.errors.required"><span style="color:red">Type is required.</span></span>
+        </small>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">
+        Allow issue. *:
+      </div>
+      <div class="ui-grid-col-4">
+        <p-inputSwitch (onChange)=" handleIssue($event)" [(ngModel)]="checkedIssue"></p-inputSwitch>
+      </div>
+      <div class="ui-grid-col-2">
+        Allow transfer. *:
+      </div>
+      <div class="ui-grid-col-4">
+        <p-inputSwitch (onChange)="handleTrasnfer($event)" [(ngModel)]="checkedTransfer"></p-inputSwitch>
+      </div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">
+        Defunct. *:
+      </div>
+      <div class="ui-grid-col-4">
+        <p-inputSwitch (onChange)="handleChange($event)" [(ngModel)]="checked"></p-inputSwitch>
+      </div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-3"></div>
+      <div class="ui-grid-col-3">
+        <button pButton label="Save" class="ui-button-success" (click)="onSave()"></button>
+      </div>
+      <div class="ui-grid-col-3">
+        <button pButton label="Cancel" class="ui-button-warning" (click)="onCancel()"></button>
+      </div>
+      <div class="ui-grid-col-3"></div>
+    </div>
+  </div>
+
+</p-panel>

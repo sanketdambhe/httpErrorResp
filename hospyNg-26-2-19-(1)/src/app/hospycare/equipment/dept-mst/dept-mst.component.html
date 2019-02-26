@@ -1,0 +1,74 @@
+<p-panel header="Department Master">
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">
+        Code. *:
+      </div>
+      <div class="ui-grid-col-4">
+        <input pInputText type="text" name="code" [(ngModel)]="deptMst.code" #code="ngModel" required
+          placeholder="Required" dir-letter-only>
+        <small *ngIf="hasErrors(code)" class="help-block">
+          <span *ngIf="code.errors.required"><span style="color:red">Code is required.</span></span>
+        </small>
+
+      </div>
+      <div class="ui-grid-col-2">
+        Name. *:
+      </div>
+      <div class="ui-grid-col-4">
+        <input pInputText type="text" name="name" [(ngModel)]="deptMst.name" #name="ngModel" minlength="2" required
+          placeholder="Required" dir-letter-only>
+        <small *ngIf="hasErrors(name)" class="help-block">
+          <span *ngIf="name.errors.required"><span style="color:red">Name is required.</span></span>
+          <span *ngIf="name.errors.minlength">name must be at least 2 characters long.</span>
+        </small>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">
+        Type . *:
+      </div>
+      <div class="ui-grid-col-4">
+        <p-dropdown [options]="types" [(ngModel)]="deptMst.type" name="type" #type="ngModel" [style]="{'width':'308px'}"
+          required placeholder="Select a Type" dir-letter-only></p-dropdown>
+        <small *ngIf="hasErrors(type)" class="help-block">
+          <span *ngIf="type.errors.required"><span style="color:red">Type is required.</span></span>
+        </small>
+      </div>
+      <div class="ui-grid-col-2">
+        Store Location Id :
+      </div>
+      <div class="ui-grid-col-4">
+        <input pInputText type="number" [(ngModel)]="deptMst.storeLocId" name="storeLocId" #storeLocId="ngModel">
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">
+        Approval Group :
+      </div>
+      <div class="ui-grid-col-4">
+        <input pInputText type="number" [(ngModel)]="deptMst.aprvlGroup" name="aprvlGroup" #aprvlGroup="ngModel">
+      </div>
+      <div class="ui-grid-col-2">
+        Defunct. *:
+      </div>
+      <div class="ui-grid-col-4">
+        <p-inputSwitch (onChange)="handleChange($event)" [(ngModel)]="checked"></p-inputSwitch>
+      </div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-3"></div>
+      <div class="ui-grid-col-3">
+        <button pButton label="Save" class="ui-button-success" (click)="onSave()"></button>
+      </div>
+      <div class="ui-grid-col-3">
+        <button pButton label="Cancel" class="ui-button-warning" (click)="onCancel()"></button>
+      </div>
+      <div class="ui-grid-col-3"></div>
+    </div>
+  </div>
+
+</p-panel>

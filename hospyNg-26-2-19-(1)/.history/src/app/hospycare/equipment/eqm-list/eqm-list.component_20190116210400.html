@@ -1,0 +1,64 @@
+<div class="container-fluid">
+  <!-- <table class="table table-responsive table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Code</th>
+        <th scope="col">Name</th>
+        <th scope="col">Model #</th>
+        <th scope="col">Serial #</th>
+        <th scope="col">Manifacture</th>
+        <th scope="col">Vender</th>
+        <th scope="col">Purchase Date</th>
+        <th scope="col">Installation Date</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let eqm of equipList;  index as i;">
+        <th scope="row">{{i+1}}</th>
+        <td>{{eqm.eqmCd}}</td>
+        <td>{{eqm.eqmName}}</td>
+        <td>{{eqm.eqmModelNo}}</td>
+        <td>{{eqm.eqmSrNo}}</td>
+        <td>{{eqm._ManName}}</td>
+        <td>{{eqm._venName}}</td>
+        <td>{{eqm.eqmPurDt | date}}</td>
+        <td>{{eqm.eqmInstlDt | date}}</td>
+        <td><button (click)="onEdit(eqm.eqmId)" class="btn btn-warning"><i class="fa fa-edit"></i></button></td>
+        <td><button (click)="onDelete(eqm.eqmId)" class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
+      </tr>
+
+    </tbody>
+  </table> -->
+
+  <p-table [columns]="cols" [value]="equipList" [responsive]="true">
+      <ng-template pTemplate="caption">
+          List of Equipments
+      </ng-template>
+      <ng-template pTemplate="header" let-columns>
+          <tr>
+              <th *ngFor="let col of columns">
+                  {{col.header}}
+              </th>
+              <th>Edit</th>
+              <th>Delete</th>              
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+          <tr>
+              <td *ngFor="let col of columns">
+                  <span class="ui-column-title">{{col.header}}</span>    
+                  {{col.type}}              
+                  {{rowData[col.field]}}
+              </td>
+              <td><button (click)="onEdit(rowData['eqmId'])" class="btn btn-warning"><i class="fa fa-edit"></i></button></td>
+              <td><button (click)="onDelete(rowData['eqmId'])" class="btn btn-danger"><i class="fa fa-trash"></i></button></td>              
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="summary">
+          There are {{equipList?.length}} Equipments
+      </ng-template>
+  </p-table>  
+</div>

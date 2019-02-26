@@ -1,0 +1,94 @@
+<p-panel header="Equipment Master">
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">
+        Code *:
+      </div>
+      <div class="ui-grid-col-4">
+        <input pInputText type="text" [(ngModel)]="eqmMst.eqmCd">
+      </div>
+      <div class="ui-grid-col-2">
+        Name *:
+      </div>
+      <div class="ui-grid-col-4">
+          <input pInputText type="text" [(ngModel)]="eqmMst.eqmName">
+        </div>      
+    </div>
+
+    
+    <div class="ui-grid-row">
+        <div class="ui-grid-col-2">
+        Model No. *:
+        </div>
+        <div class="ui-grid-col-4">
+          <input pInputText type="text" [(ngModel)]="eqmMst.eqmModelNo">
+        </div>
+        <div class="ui-grid-col-2">
+            Sr No. *:
+        </div>
+        <div class="ui-grid-col-4">
+          <input pInputText type="text" [(ngModel)]="eqmMst.eqmSrNo">
+        </div>
+    </div> 
+
+    <div class="ui-grid-row">
+        <div class="ui-grid-col-2">
+        Defunct *:
+        </div>
+        <div class="ui-grid-col-4">
+          <!-- <input pInputText type="text" [(ngModel)]="eqmMst.eqmDefunct"> -->
+          <p-inputSwitch (onChange)="handleChange($event)" [(ngModel)]="eqmMst.eqmDefunct"></p-inputSwitch>
+        </div>
+        <div class="ui-grid-col-2"></div>
+        <div class="ui-grid-col-4"></div>
+    </div> 
+
+
+    <div class="ui-grid-row">
+        <div class="ui-grid-col-3"></div>
+        <div class="ui-grid-col-3">
+            <button pButton label="Save" class="ui-button-success" (click)="onSave()"></button>            
+        </div>
+        <div class="ui-grid-col-3">
+            <button pButton label="Cancel" class="ui-button-warning" (click)="onCancel()"></button>
+        </div>
+        <div class="ui-grid-col-3"></div>
+
+    </div>
+  </div>
+
+  <!-- <table *ngIf="eqmMst">
+    <tr>
+      <td>Code</td>
+      <td>
+        <input type="text" [(ngModel)]="eqmMst.eqmCd">
+      </td>
+    </tr>
+    <tr>
+      <td>Name</td>
+      <td>
+        <input type="text" [(ngModel)]="eqmMst.eqmName"></td>
+    </tr>
+    <tr>
+      <td>Model No.</td>
+      <td>
+          <input type="text" [(ngModel)] ="eqmMst.eqmModelNo"></td>
+    </tr>
+    <tr>
+      <td>Sr No.</td>
+      <td>
+          <input type="text" [(ngModel)] ="eqmMst.eqmSrNo"></td>
+    </tr>
+    <tr>
+      <td>Defunct</td>
+      <td>
+          <input type="text" [(ngModel)] ="eqmMst.eqmDefunct"></td>
+    </tr>
+    <tr>
+      <td><button (click)="onSave()" class="btn btn-primary">Save</button></td>
+      <td><button (click)="onCancel()" class="btn btn-warning">Cancel</button></td>
+    </tr>
+  </table>
+-->
+</p-panel>
